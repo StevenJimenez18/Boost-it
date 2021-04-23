@@ -648,17 +648,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1843449151, guid: c6b3fce56b603ed4b8aa6febc11345fb, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6357260593613920962, guid: c6b3fce56b603ed4b8aa6febc11345fb, type: 3}
       propertyPath: m_Name
       value: Rocket
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357260593613921016, guid: c6b3fce56b603ed4b8aa6febc11345fb, type: 3}
-      propertyPath: m_Drag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357260593613921016, guid: c6b3fce56b603ed4b8aa6febc11345fb, type: 3}
-      propertyPath: m_Constraints
-      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 6357260593613921017, guid: c6b3fce56b603ed4b8aa6febc11345fb, type: 3}
       propertyPath: m_RootOrder
