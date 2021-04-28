@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!198 &168588086 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1196088501895419960, guid: c6b3fce56b603ed4b8aa6febc11345fb, type: 3}
+  m_PrefabInstance: {fileID: 6357260592302049373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &535793444
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6357260593613921017, guid: c6b3fce56b603ed4b8aa6febc11345fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.671
+      value: 0.518
       objectReference: {fileID: 0}
     - target: {fileID: 6357260593613921017, guid: c6b3fce56b603ed4b8aa6febc11345fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -700,5 +705,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6357260593613921021, guid: c6b3fce56b603ed4b8aa6febc11345fb, type: 3}
+      propertyPath: rocketBooster
+      value: 
+      objectReference: {fileID: 168588086}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6b3fce56b603ed4b8aa6febc11345fb, type: 3}

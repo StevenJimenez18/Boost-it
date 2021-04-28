@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     [SerializeField] AudioClip mainEngine;
     [SerializeField] float thrustSpeed = 100f;
     [SerializeField] float rotationSpeed = 20f;
+    [SerializeField] ParticleSystem rocketBooster;
     Rigidbody playerRB;
     AudioSource playerAudio;
 
@@ -31,16 +32,20 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
+
             playerRB.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
             if (!playerAudio.isPlaying)
             {
                 playerAudio.PlayOneShot(mainEngine);
+                rocketBooster.Play();
             }
         }
         else
         {
             playerAudio.Stop();
+            rocketBooster.Stop();
         }
+
 
     }
 
