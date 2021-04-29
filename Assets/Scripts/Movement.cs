@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,10 @@ public class Movement : MonoBehaviour
     [SerializeField] AudioClip mainEngine;
     [SerializeField] float thrustSpeed = 100f;
     [SerializeField] float rotationSpeed = 20f;
-    [SerializeField] ParticleSystem rocketBooster;
+    [SerializeField] ParticleSystem rocketPartciles;
     Rigidbody playerRB;
     AudioSource playerAudio;
+    public bool collisionDisabled = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,29 +26,20 @@ public class Movement : MonoBehaviour
     {
         ProcessThrust();
         ProcessRotation();
+        ProcessDebugMode();
+        ProcessSkipLevel();
     }
 
     void ProcessThrust()
     {
-
-
         if (Input.GetKey(KeyCode.Space))
         {
-
-            playerRB.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
-            if (!playerAudio.isPlaying)
-            {
-                playerAudio.PlayOneShot(mainEngine);
-                rocketBooster.Play();
-            }
+            StartThrust();
         }
         else
         {
-            playerAudio.Stop();
-            rocketBooster.Stop();
+            StopThrust();
         }
-
-
     }
 
     void ProcessRotation()
@@ -63,9 +56,45 @@ public class Movement : MonoBehaviour
         }
     }
 
+    void ProcessDebugMode()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionDisabled = !collisionDisabled;
+        }
+    }
+
+    void ProcessSkipLevel()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            GetComponent<CollisionHandler>().NextLevel();
+        }
+    }
+
+    void StartThrust()
+    {
+        playerRB.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
+        if (!playerAudio.isPlaying)
+        {
+            playerAudio.PlayOneShot(mainEngine);
+        }
+        if (!rocketPartciles.isPlaying)
+        {
+            rocketPartciles.Play();
+        }
+    }
+
+    void StopThrust()
+    {
+        playerAudio.Stop();
+        rocketPartciles.Stop();
+    }
+
     private void ApplyRotation(float rotationThisFrame)
     {
         playerRB.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
     }
+
 }

@@ -10,11 +10,8 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] AudioClip crashSound;
     [SerializeField] ParticleSystem successParticles;
     [SerializeField] ParticleSystem crashParticles;
-
-
+    [SerializeField] ParticleSystem rocketPartciles;
     AudioSource playerAudio;
-
-
     bool isTransitioning = false;
 
     void Start()
@@ -24,7 +21,7 @@ public class CollisionHandler : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (isTransitioning) { return; }
+        if (isTransitioning || GetComponent<Movement>().collisionDisabled) { return; }
         switch (other.gameObject.tag)
         {
             case "Friendly":
@@ -50,25 +47,30 @@ public class CollisionHandler : MonoBehaviour
             isTransitioning = true;
         }
     }
+
     void SuccessSequence()
     {
         ChangeState();
+        rocketPartciles.Stop();
         playerAudio.Stop();
         playerAudio.PlayOneShot(successSound);
         successParticles.Play(successSound);
         GetComponent<Movement>().enabled = false;
         Invoke("NextLevel", delayTime);
     }
+
     void CrashSequence()
     {
         ChangeState();
+        rocketPartciles.Stop();
         playerAudio.Stop();
         playerAudio.PlayOneShot(crashSound);
         crashParticles.Play();
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", delayTime);
     }
-    void NextLevel()
+
+    public void NextLevel()
     {
         ChangeState();
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -79,6 +81,7 @@ public class CollisionHandler : MonoBehaviour
         }
         SceneManager.LoadScene(nextSceneIndex);
     }
+
     void ReloadLevel()
     {
         ChangeState();
