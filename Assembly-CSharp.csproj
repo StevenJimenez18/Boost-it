@@ -36,9 +36,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\AllSkyFree\AllSkyFree_Menu.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
      <Compile Include="Assets\Scripts\CollisionHandler.cs" />
-     <Compile Include="Assets\AllSkyFree\AllSkyFree_Menu.cs" />
+     <Compile Include="Assets\Scripts\Oscillator.cs" />
      <None Include="Assets\AtomRocket\ReadMe.txt" />
      <None Include="Assets\AllSkyFree\AllSkyFree_Readme.txt" />
     <Reference Include="UnityEngine">
