@@ -26,8 +26,8 @@ public class Movement : MonoBehaviour
     {
         ProcessThrust();
         ProcessRotation();
-        ProcessDebugMode();
-        ProcessSkipLevel();
+        // ProcessDebugMode();
+        // ProcessSkipLevel();
     }
 
     void ProcessThrust()
@@ -56,21 +56,21 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void ProcessDebugMode()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            collisionDisabled = !collisionDisabled;
-        }
-    }
+    // void ProcessDebugMode()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.C))
+    //     {
+    //         collisionDisabled = !collisionDisabled;
+    //     }
+    // }
 
-    void ProcessSkipLevel()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            GetComponent<CollisionHandler>().NextLevel();
-        }
-    }
+    // void ProcessSkipLevel()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.L))
+    //     {
+    //         GetComponent<CollisionHandler>().NextLevel();
+    //     }
+    // }
 
     void StartThrust()
     {
